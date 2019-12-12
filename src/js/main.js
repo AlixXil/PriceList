@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function(){
 	draw(pricelist, list);
 
 	document.querySelector("#search").addEventListener("input", onFilter);
+	document.querySelector(".closeLink").addEventListener("click", onClose);
+	document.querySelector("#resultList").addEventListener("click", onShow);
 });
 
 // обработка фильтрации
@@ -44,6 +46,7 @@ function drawSum() {
 	}, 0)
 
 	document.querySelector(".sum").innerText = summa + "р.";
+	document.querySelector(".resultSum").innerHTML = summa + "р.";
 }
 
 // обработка нажатий кнопок сброса
@@ -68,4 +71,29 @@ function draw(printList, container) {
 				container.innerHTML += "<div class='item'><span class='item__name'>"+item.name+"</span>	<div class='item__side'><input type=button class=clearBtn data-key="+index+" value=x /><input type='text' class=countField data-key="+index+" value="+item.count+"><span class=cost>"+item.cost+"р. "+item.unit+"</span><span class=rowSum data-key="+index+">"+item.sum+"р.</span></div></div>";
 			}
 	})
+}
+
+
+// модальное окно
+function onShow() {
+
+	let result = "<table>";
+	pricelist.map((item) => {
+		if(item.sum > 0){
+			result += `<tr>
+					<td>${item.name}  </td>
+					<td>${item.cost}р.</td>
+					<td>${item.count} ${item.unit}</td>
+					<td>${item.sum}р.</td>
+				</tr>`
+		}
+	})
+	result += "</table>"
+	document.querySelector(".resultList").innerHTML = result;
+
+	document.querySelector(".modal").classList.add("active");
+}
+function onClose(e) {
+	e.preventDefault();
+	document.querySelector(".modal").classList.remove("active");
 }

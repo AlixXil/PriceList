@@ -5,6 +5,8 @@ $color: #2468B6;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+
+	font-family: "Consolas", sans-serif;
 }
 .container {
 	max-width: 520px;
@@ -28,9 +30,17 @@ $color: #2468B6;
 	z-index: 5;
 	background-color: #fff;
 }
+#search {
+	padding: 5px;
+	margin-right: 5px;
+}
+.search {
+	display: flex;
+}
 .sum {
 	font-size: 18px;
 	color: #2468B6;
+	padding: 5px;
 	padding-left: 10px;
 }
 .item {
@@ -107,4 +117,58 @@ $color: #2468B6;
 	border: none;
 	color: #fff;
 	grid-area: clear;
+}
+
+#resultList {
+	background-color: $color;
+	border: none;
+	color: #fff;
+	padding: 7px;
+}
+
+// модальное окно
+.modal-bg {
+	background-color: #fff;
+	padding: 10px 20px;
+}
+.modal {
+	position: absolute;
+	display: none;
+	align-items: center;
+
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+
+	z-index: 6;
+
+	background-color: rgba(#000, .4);
+}
+.resultList {
+	padding: 10px;
+
+	& table {
+		min-width: 40vw;
+	}
+	& td {
+		padding: 0 5px;
+	}
+}
+
+.closeLink {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 3px;
+}
+
+.resultSum {
+	text-align: right;
+}
+.active {
+	display: flex;
 }
