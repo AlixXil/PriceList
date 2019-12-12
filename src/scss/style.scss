@@ -1,0 +1,110 @@
+$sm: 450px;
+$color: #2468B6;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.container {
+	max-width: 520px;
+	margin: 0 auto;
+	padding: 0 10px;
+}
+.header, .item {
+	box-shadow: 0 0 3px #2468B6;
+	/*padding: 10px;*/
+	margin: 10px 0;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+.container-sticky {
+	position: sticky;
+	top: 10px;
+	z-index: 5;
+	background-color: #fff;
+}
+.sum {
+	font-size: 18px;
+	color: #2468B6;
+	padding-left: 10px;
+}
+.item {
+	display: grid;
+	grid-template-columns: 1fr 160px;
+	transition: .2s;
+
+	@media (min-width: $sm) {
+		grid-template-areas: 
+		"name side";
+	}
+
+	@media (max-width: $sm) {
+		grid-template-areas: 
+		"name name" 
+		"side side";
+	}
+}
+.item:hover {
+	transform: translate(3px, 3px);
+	box-shadow: 0 0 5px #2468B6;
+	transition: .2s;
+}
+.item__name {
+	flex: 3 1 0;
+	padding: 10px;
+	grid-area: name;
+}
+.item__side {
+	display: grid;
+	grid-area: side;
+	// min-width: 125px;
+
+	padding: 5px;
+	padding-left: 0;
+	background: #2468B6;
+	color: #fff;
+
+	& input[type=text] {
+		max-width: 40px;
+		grid-area: inp;
+	}
+	
+	& .cost {
+		grid-area: cost;
+		margin-left: 5px;
+	}
+	& .rowSum {
+		grid-area: sum;
+		text-align: center;
+	}
+
+	@media (min-width: $sm) {
+		grid-template-areas: 
+		"clear inp cost"
+		"clear sum sum";
+	}
+
+	// для меньших размеров
+	@media (max-width: $sm) {
+		grid-template-areas: 
+		"clear inp cost sum";
+		grid-template-columns: Repeat(4*1fr)
+	}
+}
+.item__category {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.clearBtn {
+	min-width: 30px;
+	background-color: $color;
+	border: none;
+	color: #fff;
+	grid-area: clear;
+}
