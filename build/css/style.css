@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Consolas", sans-serif; }
+
+body {
+  position: relative; }
+
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 10px; }
+
+.header, .item {
+  box-shadow: 0 0 3px #2468B6;
+  /*padding: 10px;*/
+  margin: 10px 0; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px; }
+
+.container-sticky {
+  position: sticky;
+  top: 10px;
+  z-index: 5;
+  background-color: #fff; }
+
+#search {
+  padding: 5px;
+  margin-right: 5px; }
+
+.search {
+  display: flex; }
+
+.sum {
+  font-size: 18px;
+  color: #2468B6;
+  padding: 5px;
+  padding-left: 10px; }
+
+.item {
+  display: none;
+  grid-template-columns: 1fr 160px;
+  transition: .2s; }
+  @media (min-width: 450px) {
+    .item {
+      grid-template-areas: "name side"; } }
+  @media (max-width: 450px) {
+    .item {
+      grid-template-areas: "name name"  "side side"; } }
+
+.item:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 5px #2468B6;
+  transition: .2s; }
+
+.item__name {
+  flex: 3 1 0;
+  padding: 10px;
+  grid-area: name; }
+
+.item__side {
+  display: grid;
+  grid-area: side;
+  padding: 5px;
+  padding-left: 0;
+  background: #2468B6;
+  color: #fff; }
+  .item__side input[type=number] {
+    max-width: 40px;
+    grid-area: inp; }
+  .item__side .cost {
+    grid-area: cost;
+    margin-left: 5px; }
+  .item__side .rowSum {
+    grid-area: sum;
+    text-align: center; }
+  @media (min-width: 450px) {
+    .item__side {
+      grid-template-areas: "clear inp cost" "clear sum sum"; } }
+  @media (max-width: 450px) {
+    .item__side {
+      grid-template-areas: "clear inp cost sum";
+      grid-template-columns: Repeat(4fr); } }
+
+.item__category {
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 0 5px #2468B6;
+  padding: 10px; }
+
+.item__group.open .item {
+  display: grid; }
+
+.clearBtn {
+  min-width: 30px;
+  background-color: #2468B6;
+  border: none;
+  color: #fff;
+  grid-area: clear; }
+
+#resultList {
+  background-color: #2468B6;
+  border: none;
+  color: #fff;
+  padding: 7px; }
+
+.modal-bg {
+  background-color: #fff;
+  padding: 10px 20px;
+  position: relative;
+  overflow: scroll;
+  width: 100vw;
+  height: 90vh; }
+
+.modal {
+  position: fixed;
+  display: none;
+  align-items: center;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 6;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.resultList {
+  padding: 10px; }
+  .resultList table {
+    min-width: 40vw; }
+  .resultList td {
+    padding: 0 5px;
+    border-bottom: 1px solid #2468B6; }
+
+.closeLink {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 3px; }
+
+.resultSum {
+  text-align: right; }
+
+.active {
+  display: flex; }
