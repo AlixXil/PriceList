@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function(){
 
 	let list = document.querySelector(".list");
@@ -8,6 +9,13 @@ document.addEventListener("DOMContentLoaded", function(){
 	document.querySelector("#search").addEventListener("input", onFilter);
 	document.querySelector(".closeLink").addEventListener("click", onClose);
 	document.querySelector("#resultList").addEventListener("click", onShow);
+
+	document.querySelectorAll('.item__category').forEach(item => {
+		// item.addE
+	})
+	// , (e) => {
+	// 	e.target.classList.toggle('.open')
+	// })
 });
 
 // обработка фильтрации
@@ -24,7 +32,7 @@ function onFilter(e) {
 // обработка ввода данных в инпуты
 function onChange(e) {
 	let key = e.target.dataset.key;
-	let val = parseInt(e.target.value) || 0;
+	let val = parseFloat(e.target.value) || 0;
 	
 	update(key, val);
 }
@@ -51,9 +59,14 @@ function drawSum() {
 
 // обработка нажатий кнопок сброса
 function onClick(e) {
+	
 	if(e.target.type == "button") {
 		document.querySelector(".countField[data-key=\'"+e.target.dataset.key+"\']").value = '';
 		update(e.target.dataset.key, '');
+	}
+	// открытие\закрытие списков
+	if(e.target.classList.contains('item__category')) {
+		e.target.parentNode.classList.toggle('open')	
 	}
 }
 
@@ -61,14 +74,19 @@ function onClick(e) {
 function draw(printList, container) {
 	let category = null;
 	container.innerHTML = "";
+	htmlString = "";
 	printList.forEach((item, index) => {
 		if(!item.filtered)
 		{
 			if(!category || item.category !== category) {
-					container.innerHTML += "<div class='item__category'>"+item.category+"</div>";
+					if(htmlString !== "") {
+						container.innerHTML += "<div class='item__group'>"+ htmlString+"</div>"
+					}
+
+					htmlString = "<div class='item__category'>"+item.category+"</div>";
 					category = item.category;
 				}
-				container.innerHTML += "<div class='item'><span class='item__name'>"+item.name+"</span>	<div class='item__side'><input type=button class=clearBtn data-key="+index+" value=x /><input type='text' class=countField data-key="+index+" value="+item.count+"><span class=cost>"+item.cost+"р. "+item.unit+"</span><span class=rowSum data-key="+index+">"+item.sum+"р.</span></div></div>";
+				htmlString += "<div class='item'><span class='item__name'>"+item.name+"</span>	<div class='item__side'><input type=button class=clearBtn data-key="+index+" value=x /><input type='number' class=countField data-key="+index+" value="+item.count+"><span class=cost>"+item.cost+"р. "+item.unit+"</span><span class=rowSum data-key="+index+">"+item.sum+"р.</span></div></div>";
 			}
 	})
 }
@@ -92,8 +110,10 @@ function onShow() {
 	document.querySelector(".resultList").innerHTML = result;
 
 	document.querySelector(".modal").classList.add("active");
+	document.body.style.overflow = 'hidden';
 }
 function onClose(e) {
 	e.preventDefault();
 	document.querySelector(".modal").classList.remove("active");
+	document.body.style.overflow = 'auto';
 }

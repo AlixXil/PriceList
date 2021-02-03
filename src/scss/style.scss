@@ -8,6 +8,9 @@ $color: #2468B6;
 
 	font-family: "Consolas", sans-serif;
 }
+body {
+	position: relative;
+}
 .container {
 	max-width: 520px;
 	margin: 0 auto;
@@ -44,7 +47,7 @@ $color: #2468B6;
 	padding-left: 10px;
 }
 .item {
-	display: grid;
+	display: none;
 	grid-template-columns: 1fr 160px;
 	transition: .2s;
 
@@ -79,7 +82,7 @@ $color: #2468B6;
 	background: #2468B6;
 	color: #fff;
 
-	& input[type=text] {
+	& input[type=number] {
 		max-width: 40px;
 		grid-area: inp;
 	}
@@ -109,6 +112,11 @@ $color: #2468B6;
 .item__category {
 	font-size: 20px;
 	font-weight: 700;
+	box-shadow: 0 0 5px #2468B6;
+	padding: 10px;
+}
+.item__group.open .item {
+	display: grid;
 }
 
 .clearBtn {
@@ -130,16 +138,22 @@ $color: #2468B6;
 .modal-bg {
 	background-color: #fff;
 	padding: 10px 20px;
+	position: relative;
+	overflow: scroll;
+	width: 100vw;
+	height: 90vh;
 }
 .modal {
-	position: absolute;
+	position: fixed;
 	display: none;
 	align-items: center;
 
 	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
+	// left: 0;
+	// bottom: 0;
+	// right: 0;
+	width: 100vw;
+	height: 100vh;
 
 	z-index: 6;
 
@@ -147,12 +161,14 @@ $color: #2468B6;
 }
 .resultList {
 	padding: 10px;
+	// overflow: scroll;
 
 	& table {
 		min-width: 40vw;
 	}
 	& td {
 		padding: 0 5px;
+		border-bottom: 1px solid $color;
 	}
 }
 
