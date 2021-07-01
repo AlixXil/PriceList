@@ -80,7 +80,7 @@ function draw(printList, container) {
 		{
 			if(!category || item.category !== category) {
 					if(htmlString !== "") {
-						container.innerHTML += "<div class='item__group'>"+ htmlString+"</div>"
+						container.innerHTML += "<div class='item__group'>"+ htmlString+"<span class='item__group-counter'></span></div>"
 					}
 
 					htmlString = "<div class='item__category'>"+item.category+"</div>";

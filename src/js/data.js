@@ -23,7 +23,8 @@ let pricelist = [
 
 // ----------
 
-{"category": "Плитка", "name": "Укладка плитки менее 20х30", "unit": "м2", "cost": 850, count: "", "sum": 0, filtered: false},
+{"category": "Плитка", "name": "Укладка плитки менее 20х30", "unit": "м2", "cost": 1300, count: "", "sum": 0, filtered: false},
+{"category": "Плитка", "name": "Укладка плитки более 20х30", "unit": "м2", "cost": 1000, count: "", "sum": 0, filtered: false},
 {"category": "Плитка", "name": "Укладка плиточного плинтуса", "unit": "м.п", "cost": 200, count: "", "sum": 0, filtered: false},
 {"category": "Плитка", "name": "Сверление отверстий в плитке до 50мм", "unit": "шт", "cost": 200, count: "", "sum": 0, filtered: false},
 {"category": "Плитка", "name": "Затирка швов", "unit": "м2", "cost": 70, count: "", "sum": 0, filtered: false},
